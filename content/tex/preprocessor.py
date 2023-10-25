@@ -71,7 +71,8 @@ def find_start_comment(source, start=None):
 
 def processwithcomments(caption, instream, outstream, listingslang):
     knowncommands = ['Author', 'Date', 'Description', 'Source', 'Time', 'Memory', 'License', 'Status', 'Usage', 'Details']
-    requiredcommands = ['Author', 'Description']
+    requiredcommands = [] # for now we do not enforce these fields
+    # requiredcommands = ['Author', 'Description']
     includelist = []
     error = ""
     warning = ""
@@ -86,9 +87,13 @@ def processwithcomments(caption, instream, outstream, listingslang):
             continue
         if 'include-line' in line:
             line = line.replace('// ', '', 1)
+        line = line.replace("ö", "oe")
+        line = line.replace("ä", "ae")
+        line = line.replace("ü", "ue")
         had_comment = "///" in line
         keep_include = 'keep-include' in line
         # Remove /// comments
+        # ! disabling this breaks stuff for magical reasons
         line = line.split("///")[0].rstrip()
         # Remove '#pragma once' lines
         if line == "#pragma once":
