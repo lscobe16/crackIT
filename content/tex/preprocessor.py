@@ -181,8 +181,7 @@ def processwithcomments(caption, instream, outstream, listingslang):
             out.append(r"\rightcaption{%s%d lines}" % (hsh, len(nsource.split("\n"))))
         langstr = ", language="+listingslang
         out.append(r"\begin{lstlisting}[caption={%s}%s]" % (pathescape(caption), langstr))
-        # out.append(nsource) ｜
-        out.append("\n".join(["st" + "lng| " + line for (i, line) in enumerate(nsource.split("\n"))]))
+        out.append(nsource)
         out.append(r"\end{lstlisting}")
 
     for line in out:
