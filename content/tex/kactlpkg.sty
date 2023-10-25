@@ -3,6 +3,7 @@
 \ProvidesPackage{kactlpkg}
 
 \usepackage[utf8]{inputenc}             % Encoding UTF-8
+\usepackage[T1]{fontenc}
 \usepackage{listings}                   % Source code listings
 \usepackage{framed}                     % Source code listings
 \usepackage[a4paper,landscape,hmargin={0.5cm,0.5cm},vmargin={1.0cm,0.4cm}]{geometry}
@@ -201,7 +202,14 @@
 \lstset{breaklines=true}
 \lstset{basicstyle=\footnotesize\ttfamily}
 \lstset{commentstyle=\normalfont\itshape}
-\lstset{literate={^}{\caret}{1} {~}{\tilde}{1} {\{}{\nicelbrace}{1} {\}}{\nicerbrace}{1}}
+\lstset{literate=
+	{^}{\caret}{1} 
+	{~}{\tilde}{1} 
+	{\{}{\nicelbrace}{1} 
+	{\}}{\nicerbrace}{1}
+	{lng|}{{\parbox[c][0pt]{4.2pt}{\scalebox{1}[1.6]{|}}}}{1}
+}
+\lstset{escapeinside={\%*}{*)}}
 \lstset{emptylines=*1}
 \lstset{inputencoding=utf8}
 \lstset{aboveskip=3pt}
